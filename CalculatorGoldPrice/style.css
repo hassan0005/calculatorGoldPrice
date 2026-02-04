@@ -1,0 +1,307 @@
+:root {
+    --gold-primary: #D4AF37;
+    --gold-light: #F4E29E;
+    --gold-dark: #8A6E18;
+    --bg-dark: #0F0F10;
+    --bg-card: #1A1A1C;
+    --text-main: #FFFFFF;
+    --text-muted: #A0A0A0;
+    --success: #4CAF50;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border-glass: rgba(212, 175, 55, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Background Effects */
+.bg-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% -20%, #2a2510 0%, var(--bg-dark) 60%);
+    z-index: -2;
+}
+
+.bg-orb {
+    position: fixed;
+    top: 20%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: var(--gold-primary);
+    filter: blur(150px);
+    opacity: 0.15;
+    z-index: -1;
+    animation: float 10s infinite alternate;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(50px); }
+}
+
+/* Header */
+.main-header {
+    margin-top: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.main-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, var(--gold-light), var(--gold-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+}
+
+.subtitle {
+    color: var(--gold-primary);
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+    flex: 1;
+}
+
+/* Menu Grid */
+.menu-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.menu-card {
+    background: linear-gradient(145deg, #222224, #1a1a1c);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: var(--text-main);
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold-primary);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+}
+
+.menu-card:active {
+    transform: scale(0.98);
+}
+
+.icon-wrapper {
+    color: var(--gold-primary);
+    margin-bottom: 1rem;
+}
+
+.menu-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.menu-card p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Calculator Section */
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.calculator-container {
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+}
+
+.back-btn:hover {
+    color: var(--gold-primary);
+}
+
+.calculator-card {
+    background: rgba(30, 30, 35, 0.9);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+#calc-title {
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+label {
+    display: block;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+input, select {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 1rem;
+    color: white;
+    font-size: 1.1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+::placeholder {
+    color: #555;
+}
+
+.weight-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.weight-tags span {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.weight-tags span:hover {
+    border-color: var(--gold-primary);
+    color: var(--gold-primary);
+}
+
+.result-box {
+    background: linear-gradient(145deg, #151515, #1e1e1e);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.result-box span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-box h1 {
+    font-size: 2.2rem;
+    color: var(--success);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.reset-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #444;
+    color: var(--text-muted);
+    padding: 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.reset-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-color: #666;
+}
+
+/* Logic for text color change based on profit/loss context availability */
+.profit-text {
+    color: var(--success);
+}
+
+@media (max-width: 480px) {
+    .main-header h1 {
+        font-size: 2rem;
+    }
+    .result-box h1 {
+        font-size: 1.8rem;
+    }
+    .icon-wrapper svg {
+        width: 32px;
+        height: 32px;
+    }
+}
